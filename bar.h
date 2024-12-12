@@ -38,16 +38,7 @@ struct Bar
 
 namespace BarMan
 {
-   enum BAR_FLAGS
-   {
-      INIT_CORE,   // Initialize only core components
-      INIT_SAFE,   // Initialize only the minimum components
-      INIT,        // Initialize the manager
-      QUIT_CORE,   // Quit only the core components (rare)
-      QUIT         // Quit bar manager
-   };
-
-   int Init(Bar* bar, BAR_FLAGS FLAG)
+   int Init(Bar* bar)
    {
       bar->MAX_TITLE_LENGTH                = (bar->CUSTOM_TITLE_LENGTH == 0)       ? BarSettings::DEFAULT_TITLE_LENGTH      : bar->CUSTOM_TITLE_LENGTH;        // Configure MAX_TITLE_LENGTH
       bar->CONTENT_CHARACTER               = (bar->CUSTOM_CONTENT_CHARACTER == "") ? BarSettings::DEFAULT_CONTENT_CHARACTER : bar->CUSTOM_CONTENT_CHARACTER;   // Configure CONTENT_CHARACTER
@@ -57,7 +48,7 @@ namespace BarMan
       return 0;
    }
 
-   int Quit(Bar* bar, BAR_FLAGS FLAG)
+   int Quit(Bar* bar)
    {
       bar->CONTENT_CHARACTER               = "";
       bar->SPACER_CHARACTER                = "";
